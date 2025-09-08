@@ -58,6 +58,10 @@ The analysis of EEG signals before and after listening to music revealed **clear
 - Stronger synchronization after music (0.82–0.99 correlations)  
 - 👉 Associated with **learning, memory, and enhanced cognition**  
 
+<p align="center">
+ 
+  <img src="after_topo.png" alt="After Music" width="400"/>
+</p>
 
 
 ---
