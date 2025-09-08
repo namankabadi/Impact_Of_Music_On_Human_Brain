@@ -60,7 +60,7 @@ The analysis of EEG signals before and after listening to music revealed **clear
 
 <p align="center">
  
-  <img src="after_topo.png" alt="After Music" width="400"/>
+  <img src="before_topo.png" alt="After Music" width="400"/>
 </p>
 
 
