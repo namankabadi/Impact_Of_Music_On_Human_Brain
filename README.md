@@ -19,5 +19,53 @@ By studying the impact of specific music genres on brain activity, we aim to pro
 
 ---
 
+
+## 📊 Results & Observations  
+
+The analysis of EEG signals before and after listening to music revealed **clear neural changes across different brainwave bands**:
+
+### 🔹 Heatmap Analysis  
+- Certain brainwave measures showed **strong correlation** (0.80–0.86).  
+- One feature showed **no correlation** (0.00), indicating selective activity.  
+- Suggests that **music selectively synchronizes brain functions**.
+
+<p align="center">
+  <img src="after_topo.png" alt="Heatmap After Music" width="400"/>
+</p>
+
+---
+
+### 🔹 Band-Wise EEG Comparison  
+
+#### 🌀 Delta Band  
+- **Before**: Higher activity  
+- **After**: Reduced, scattered  
+- 👉 Suggests **deep relaxation**  
+
+#### 🌊 Theta Band  
+- Clear reduction after music  
+- 👉 Indicates **stress relief and calmness**  
+
+#### 🌞 Alpha Band  
+- Increased stability and strength  
+- 👉 Reflects **focus, clarity, and relaxation**  
+
+#### ⚡ Beta Band  
+- Significantly lower after music  
+- 👉 Suggests **reduced anxiety and lower cognitive load**  
+
+#### 🔮 Gamma Band  
+- Stronger synchronization after music (0.82–0.99 correlations)  
+- 👉 Associated with **learning, memory, and enhanced cognition**  
+
+
+
+---
+
+✅ These findings highlight the **therapeutic potential of music**, showing measurable improvements in relaxation, focus, and cognitive function.  
+
+
 ✨ *This repository documents the journey of exploring how music shapes the human brain through science, data, and technology.*  
+
+
  
