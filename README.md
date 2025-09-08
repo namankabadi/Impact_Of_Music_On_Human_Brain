@@ -71,8 +71,8 @@ The analysis of EEG signals before and after listening to music revealed **clear
 2. Install libraries like numpy, tranformers, torch, django
 3. Run the following command :
      py manage.py runserver in command prompt
-4. Download the EEG Datasets given project_data_files
-5.  Upload the Datasets in UI  and get insights of music influnece before and after listening to music.
+4. Download the EEG Datasets given in GitHub project_data_files folder
+5. Upload the Datasets in UI  and get insights of music influnece before and after listening to music.
 
 ✅ These findings highlight the **therapeutic potential of music**, showing measurable improvements in relaxation, focus, and cognitive function.  
 
