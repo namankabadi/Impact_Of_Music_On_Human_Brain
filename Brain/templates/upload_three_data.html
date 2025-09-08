@@ -1,0 +1,856 @@
+{% comment %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Influence on Brainwaves</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url('{% static "background.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .custom-button {
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+      }
+
+      .marquee-text {
+        font-size: 2rem;
+        display: inline-block;
+        white-space: nowrap;
+      }
+
+      footer {
+        padding: 10px 0;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 1200px) {
+        .navbar-brand {
+          font-size: 2rem;
+        }
+
+        .marquee-text {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 1200px) and (min-width: 768px) {
+        .navbar-brand {
+          font-size: 1.75rem;
+        }
+
+        .marquee-text {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 1.5rem;
+        }
+
+        .marquee-text {
+          font-size: 1.5rem;
+        }
+
+        .custom-button {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .navbar-brand {
+          font-size: 1.2rem;
+        }
+
+        .marquee-text {
+          font-size: 1.2rem;
+        }
+
+        .custom-button {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (min-width: 340px) and (max-width: 435px) {
+        .navbar-brand {
+          font-size: 0.9rem;
+        }
+
+        .marquee-text {
+          font-size: 0.8rem;
+        }
+
+        .custom-button {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+      <div class="container-fluid">
+        <div class="dropdown-center">
+          <h1
+            class="btn btn-secondary bg-dark navbar-dark"
+            aria-expanded="false"
+          >
+            Impact Of Music On Human Health Using Brain Signals
+          </h1>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html" target="_blank">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                target="_blank"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Visit
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/system.html"
+                    >System Architecture</a
+                  >
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="/insights.html"
+                    >Key Insights</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-disabled="false" href="/contact.html"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br /><br /><br /><br />
+
+    <marquee behavior="scroll" scrollamount="0" direction="left"
+      ><strong
+        >🎶 Impact of Music on Human Health Using Brain Signals 🧠</strong
+      ></marquee
+    >
+
+    <!-- Main Content -->
+    <div class="container mt-5 pt-5">
+      <h1 class="text-center mb-4">
+        Music Influence on Brainwaves (Multi-Genre Analysis)
+      </h1>
+      <p class="text-center mb-4">
+        Upload EEG signal datasets to analyze the effect of music on brainwaves.
+      </p>
+
+      <!-- Upload Form -->
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="before_music" class="form-label"
+            >Before Music Dataset (CSV):</label
+          >
+          <input
+            type="file"
+            class="form-control"
+            name="before_music"
+            id="before_music"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="after_music1" class="form-label"
+            >After Music Dataset 1 (CSV):</label
+          >
+          <input
+            type="file"
+            class="form-control"
+            name="after_music1"
+            id="after_music1"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            name="genre1"
+            placeholder="Enter Genre Name for After Music 1"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="after_music2" class="form-label"
+            >After Music Dataset 2 (CSV):</label
+          >
+          <input
+            type="file"
+            class="form-control"
+            name="after_music2"
+            id="after_music2"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            name="genre2"
+            placeholder="Enter Genre Name for After Music 2"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="after_music3" class="form-label"
+            >After Music Dataset 3 (CSV):</label
+          >
+          <input
+            type="file"
+            class="form-control"
+            name="after_music3"
+            id="after_music3"
+            required
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            name="genre3"
+            placeholder="Enter Genre Name for After Music 3"
+            required
+          />
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+
+      {% if results %}
+      <h2 class="text-center mt-5">Analysis Results</h2>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+          <h3 class="text-center">EEG Band Signal Comparison</h3>
+          <img
+            class="img-fluid"
+            src="{{ comparison_plot_base64 }}"
+            alt="Comparison Plot"
+          />
+        </div>
+      </div>
+
+      <h3 class="text-center mt-5">EEG Band Distribution</h3>
+      <div class="row justify-content-center">
+        {% for plot in distribution_plots_base64 %}
+        <div class="col-md-4 mb-4">
+          <img
+            class="img-fluid"
+            src="{{ plot }}"
+            alt="EEG Band Distribution Plot"
+          />
+        </div>
+        {% endfor %}
+      </div>
+
+      <h3 class="text-center mt-5">EEG Band Insights</h3>
+      <table class="table table-striped text-center mt-3">
+        <thead>
+          <tr>
+            <th>Genre</th>
+            <th>EEG Band</th>
+            <th>Difference (µV)</th>
+            <th>Action</th>
+            <th>Advanced Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for insight in insights %}
+          <tr>
+            <td>{{ insight.genre }}</td>
+            <td>{{ insight.band }}</td>
+            <td>{{ insight.difference }}</td>
+            <td>{{ insight.action }}</td>
+            <td>{{ insight.advanced_action }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+
+    <footer class="footer bg-dark mt-5">
+      <div class="container text-center">
+        <span class="text-white"
+          >© 2024 Impact Of Music On Human Health Using Brain Signals</span
+        >
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+{% endcomment %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Influence on Brainwaves</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url('{% static "background.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .custom-button {
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+      }
+
+      .marquee-text {
+        font-size: 2rem;
+        display: inline-block;
+        white-space: nowrap;
+      }
+
+      footer {
+        padding: 10px 0;
+      }
+
+      .spinner-container {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .spinner-border {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 1200px) {
+        .navbar-brand {
+          font-size: 2rem;
+        }
+
+        .marquee-text {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 1200px) and (min-width: 768px) {
+        .navbar-brand {
+          font-size: 1.75rem;
+        }
+
+        .marquee-text {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 1.5rem;
+        }
+
+        .marquee-text {
+          font-size: 1.5rem;
+        }
+
+        .custom-button {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .navbar-brand {
+          font-size: 1.2rem;
+        }
+
+        .marquee-text {
+          font-size: 1.2rem;
+        }
+
+        .custom-button {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (min-width: 340px) and (max-width: 435px) {
+        .navbar-brand {
+          font-size: 0.9rem;
+        }
+
+        .marquee-text {
+          font-size: 0.8rem;
+        }
+
+        .custom-button {
+          font-size: 0.9rem;
+        }
+      }
+      /* Responsive Design */
+      @media (min-width: 1200px) {
+        .navbar-brand {
+          font-size: 2rem;
+        }
+
+        .marquee-text {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 1200px) and (min-width: 768px) {
+        .navbar-brand {
+          font-size: 1.75rem;
+        }
+
+        .marquee-text {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 1.5rem;
+        }
+
+        .marquee-text {
+          font-size: 1.5rem;
+        }
+
+        .custom-button {
+          font-size: 1rem;
+        }
+
+        .text-center h2,
+        .text-center h3 {
+          font-size: 1.25rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .navbar-brand {
+          font-size: 1.2rem;
+        }
+
+        .marquee-text {
+          font-size: 1.2rem;
+        }
+
+        .custom-button {
+          font-size: 0.9rem;
+        }
+
+        .text-center h2,
+        .text-center h3 {
+          font-size: 1rem;
+        }
+      }
+
+      @media (min-width: 340px) and (max-width: 435px) {
+        .navbar-brand {
+          font-size: 0.9rem;
+        }
+
+        .marquee-text {
+          font-size: 0.8rem;
+        }
+
+        .custom-button {
+          font-size: 0.9rem;
+        }
+
+        .text-center h2,
+        .text-center h3 {
+          font-size: 0.8rem;
+        }
+      }
+
+      .img-fluid {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .table {
+        font-size: 0.9rem;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .mt-5 {
+        margin-top: 3rem;
+      }
+
+      .mt-4 {
+        margin-top: 2rem;
+      }
+
+      .mb-4 {
+        margin-bottom: 1.5rem;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .col-md-4 {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+      }
+
+      .col-md-8 {
+        flex: 0 0 66.666%;
+        max-width: 66.666%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+      <div class="container-fluid">
+        <div class="dropdown-center">
+          <h1
+            class="btn btn-secondary bg-dark navbar-dark"
+            aria-expanded="false"
+          >
+            Impact Of Music On Human Health Using Brain Signals
+          </h1>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html" target="_blank">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                target="_blank"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Visit
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/system.html"
+                    >System Architecture</a
+                  >
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="/insights.html"
+                    >Key Insights</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-disabled="false" href="/contact.html"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br /><br /><br /><br />
+
+    <marquee behavior="scroll" scrollamount="0" direction="left"
+      ><strong
+        >🎶 Impact of Music on Human Health Using Brain Signals 🧠</strong
+      ></marquee
+    >
+
+    <!-- Main Content -->
+    <div class="container mt-5 pt-5">
+      <h1 class="text-center mb-4">
+        Music Influence on Brainwaves (Multi-Genre Analysis)
+      </h1>
+      <p class="text-center mb-4">
+        Upload EEG signal datasets to analyze the effect of music on brainwaves.
+      </p>
+
+      <!-- Upload Form -->
+      <div id="upload-form">
+        <form
+          method="POST"
+          enctype="multipart/form-data"
+          onsubmit="showSpinner()"
+        >
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="before_music" class="form-label"
+              >Before Music Dataset (CSV):</label
+            >
+            <input
+              type="file"
+              class="form-control"
+              name="before_music"
+              id="before_music"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="after_music1" class="form-label"
+              >After Music Dataset 1 (CSV):</label
+            >
+            <input
+              type="file"
+              class="form-control"
+              name="after_music1"
+              id="after_music1"
+              required
+            />
+            <input
+              type="text"
+              class="form-control mt-2"
+              name="genre1"
+              placeholder="Enter Genre Name for After Music 1"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="after_music2" class="form-label"
+              >After Music Dataset 2 (CSV):</label
+            >
+            <input
+              type="file"
+              class="form-control"
+              name="after_music2"
+              id="after_music2"
+              required
+            />
+            <input
+              type="text"
+              class="form-control mt-2"
+              name="genre2"
+              placeholder="Enter Genre Name for After Music 2"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="after_music3" class="form-label"
+              >After Music Dataset 3 (CSV):</label
+            >
+            <input
+              type="file"
+              class="form-control"
+              name="after_music3"
+              id="after_music3"
+              required
+            />
+            <input
+              type="text"
+              class="form-control mt-2"
+              name="genre3"
+              placeholder="Enter Genre Name for After Music 3"
+              required
+            />
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Spinner -->
+      <div class="spinner-container" id="spinner-container">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Processing...</span>
+        </div>
+      </div>
+
+      <div class="container">
+        {% if results %}
+        <h2 class="text-center mt-5">Analysis Results</h2>
+
+        <div class="row mt-4">
+          <div class="col-md-8">
+            <h3 class="text-center">EEG Band Signal Comparison</h3>
+            <img
+              class="img-fluid"
+              src="{{ comparison_plot_base64 }}"
+              alt="Comparison Plot"
+            />
+          </div>
+        </div>
+
+        <br />
+        <h2>EEG Band Signal Plots</h2>
+        {% for plot in eeg_band_signal_plots %}
+        <div class="eeg-plot">
+          <img
+            src="data:image/png;base64,{{ plot }}"
+            alt="EEG Band Signal Plot"
+            class="img-fluid"
+          />
+        </div>
+        {% endfor %}
+
+        <h3 class="text-center mt-5">EEG Band Distribution</h3>
+        <div class="row">
+          {% for plot in distribution_plots_base64 %}
+          <div class="col-md-4 mb-4">
+            <img
+              class="img-fluid"
+              src="{{ plot }}"
+              alt="EEG Band Distribution Plot"
+            />
+          </div>
+          {% endfor %}
+        </div>
+
+        <h3 class="text-center mt-5">EEG Band Insights</h3>
+        <table class="table table-striped text-center mt-3">
+          <thead>
+            <tr>
+              <th>Genre</th>
+              <th>EEG Band</th>
+              <th>Difference (Delta)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for result in insights %}
+            <tr>
+              <td>{{ result.genre }}</td>
+              <td>{{ result.band }}</td>
+              <td>{{ result.difference }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+
+        <h1 class="text-center mt-5">
+          EEG Data Analysis and ML Model Comparison
+        </h1>
+
+        <h2 class="text-center">Model Accuracy Scores</h2>
+        <img
+          src="data:image/png;base64,{{ model_scores_plot }}"
+          alt="Model Scores Plot"
+          class="img-fluid"
+        />
+        <table class="table table-striped text-center mt-3">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for model, score in model_scores.items %}
+            <tr>
+              <td>{{ model }}</td>
+              <td>{{ score|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <footer class="bg-dark text-light text-center mt-5">
+      <p>Copyright ©2024 | All Rights Reserved</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function showSpinner() {
+        document.getElementById("upload-form").classList.add("hidden");
+        document.getElementById("spinner-container").style.display = "flex";
+      }
+    </script>
+  </body>
+</html>

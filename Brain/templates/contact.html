@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact Us</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url('{% static "background.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        padding-top: 70px; /* Adjust this based on the height of your navbar */
+      }
+
+      .navbar {
+        z-index: 1000; /* Ensure the navbar is above other content */
+      }
+
+      .custom-button {
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+      }
+
+      .marquee-text {
+        font-size: 2rem;
+        display: inline-block;
+        white-space: nowrap;
+      }
+
+      footer {
+        padding: 10px 0;
+      }
+
+      /* Toast styles */
+      .toast-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1050; /* Ensure the toast is above other content */
+      }
+
+      .toast {
+        font-size: 1.2rem;
+        background-color: #28a745;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Toast notification (hidden initially) -->
+    <div class="toast-container">
+      <div
+        id="toastMessage"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-body">
+          Your query is recorded, and we will get back to you soon!
+        </div>
+      </div>
+    </div>
+
+    <nav
+      class="navbar navbar-expand-lg bg-dark navbar-dark position-fixed fixed-top"
+    >
+      <div class="dropdown-center">
+        <h1 class="btn btn-secondary bg-dark navbar-dark" aria-expanded="false">
+          Impact Of Music On Human Health Using Brain Signals
+        </h1>
+      </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html" target="_blank">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                target="_blank"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Visit
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/system.html"
+                    >System Architecture</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/insights.html"
+                    >Key Insights</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-disabled="false" href="contact.html"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br /><br />
+    <div class="marquee-text">
+      <strong>Welcome to Our Website</strong>
+    </div>
+    <marquee behavior="scroll" scrollamount="0" direction="left"
+      ><strong
+        >🎶 Impact of Music on Human Health Using Brain Signals 🧠</strong
+      ></marquee
+    >
+
+    <p><b>Feel free to contact us using the form below:</b></p>
+    <form id="contactForm" class="container" onsubmit="return validateForm()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"
+          >Enter Email address:</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter Email address"
+          required
+        />
+        <div id="emailHelp" class="form-text">
+          We'll never share your email with anyone else.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+          >Enter Your Query:
+        </label>
+        <input
+          type="textbox"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Write your queries here..."
+          required
+        />
+      </div>
+      <div class="mb-3 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="exampleCheck1"
+          required
+        />
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br /><br /><br />
+
+    <footer class="footer bg-dark fixed-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <span class="text-white"
+              >© 2024 Impact Of Music On Human Health Using Brain Signals</span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function validateForm() {
+        var email = document.getElementById("exampleInputEmail1").value;
+        var password = document.getElementById("exampleInputPassword1").value;
+        var checkbox = document.getElementById("exampleCheck1").checked;
+
+        // Check if email is empty
+        if (email == "") {
+          alert("Email must be filled out");
+          return false;
+        }
+
+        // Check if password is empty
+        if (password == "") {
+          alert("Password must be filled out");
+          return false;
+        }
+
+        // Check if checkbox is checked
+        if (!checkbox) {
+          alert("Please check the checkbox");
+          return false;
+        }
+
+        // Display success message using Toast
+        var toast = new bootstrap.Toast(
+          document.getElementById("toastMessage")
+        );
+        toast.show();
+
+        // Wait for 10 seconds (10000 milliseconds) before resetting the form
+        setTimeout(function () {
+          document.getElementById("contactForm").reset(); // Reset the form
+        }, 10000);
+
+        // Validation successful
+        return false; // Return false to prevent form submission (you can remove this if you want the form to actually submit)
+      }
+    </script>
+  </body>
+</html>

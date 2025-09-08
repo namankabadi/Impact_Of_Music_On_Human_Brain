@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <title>Upload CSV Files</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-image: url('{% static "background.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        padding-top: 60px; /* Add space for fixed header */
+        padding-bottom: 60px; /* Add space for fixed footer */
+      }
+      .footer {
+        padding: 20px 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: black;
+        color: white;
+        text-align: center;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+      .navbar .navbar-brand,
+      .navbar-nav .nav-link {
+        color: white !important;
+      }
+      .navbar-toggler {
+        border-color: white;
+      }
+
+      .text-white {
+        color: white;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+        margin-top: 80px; /* Added margin-top to create space for navbar */
+      }
+
+      h2 {
+        margin-top: 0;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="file"] {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        width: 100%;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      marquee strong {
+        font-size: 2rem; /* Base font size for marquee text */
+        color: blue;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      }
+      marquee strong:hover {
+        color: red;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      }
+      .marquee-text {
+        font-size: 20px; /* Base font size for welcome text */
+        display: inline-block;
+        white-space: nowrap;
+      }
+      footer {
+        padding: 10px 0;
+      }
+
+      /* Responsive Design */
+      /* For larger screens (desktop) */
+      @media (min-width: 1200px) {
+        .navbar-brand {
+          font-size: 2rem; /* Large screen: font size for navbar brand */
+        }
+        marquee strong {
+          font-size: 2rem; /* Large screen: font size for marquee */
+        }
+        .marquee-text {
+          font-size: 2.5rem; /* Larger welcome text */
+        }
+      }
+
+      /* For medium screens (tablet) */
+      @media (max-width: 1200px) and (min-width: 768px) {
+        .navbar-brand {
+          font-size: 1.75rem; /* Adjust navbar text for tablet */
+        }
+        marquee strong {
+          font-size: 1.75rem; /* Adjust marquee text for tablet */
+        }
+        .marquee-text {
+          font-size: 2rem; /* Adjust welcome text for tablet */
+        }
+      }
+
+      /* For small screens (mobile) */
+      @media (max-width: 768px) {
+        .navbar-brand {
+          font-size: 1.5rem; /* Adjust navbar text for mobile */
+        }
+        marquee strong {
+          font-size: 1.5rem; /* Adjust marquee text for mobile */
+        }
+        .marquee-text {
+          font-size: 1.5rem; /* Adjust welcome text for mobile */
+        }
+        .custom-button {
+          font-size: 1rem; /* Adjust button text for mobile */
+        }
+      }
+
+      /* For extra small screens (very small mobile) */
+      @media (max-width: 576px) {
+        .navbar-brand {
+          font-size: 1.2rem; /* Smallest navbar text for very small screens */
+        }
+        marquee strong {
+          font-size: 1.2rem; /* Smallest marquee text */
+        }
+        .marquee-text {
+          font-size: 1.2rem; /* Smallest welcome text */
+        }
+        .custom-button {
+          font-size: 0.9rem; /* Button size for very small screens */
+        }
+      }
+
+      /* For very small mobile screens (320px to 576px) */
+      @media (min-width: 436px) and (max-width: 516px) {
+        .navbar-brand {
+          font-size: 1rem; /* Smallest navbar text for very small screens */
+        }
+        marquee strong {
+          font-size: 1rem; /* Smallest marquee text */
+        }
+        .marquee-text {
+          font-size: 1rem; /* Smallest welcome text */
+        }
+        .custom-button {
+          font-size: 0.9rem; /* Button size for very small screens */
+        }
+      }
+      @media (min-width: 340px) and (max-width: 435px) {
+        .navbar-brand {
+          font-size: 0.9rem; /* Smallest navbar text for very small screens */
+        }
+        marquee strong {
+          font-size: 0.9rem; /* Smallest marquee text */
+        }
+        .marquee-text {
+          font-size: 0.8rem; /* Smallest welcome text */
+        }
+        .custom-button {
+          font-size: 0.9rem; /* Button size for very small screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <h1 class="btn btn-secondary">
+          Impact Of Music On Human Health Using Brain Signals
+        </h1>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html" target="_blank">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                target="_blank"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Visit
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/system.html"
+                    >System Architecture</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/insights.html"
+                    >Key Insights</a
+                  >
+                </li>
+                {% comment %}
+                <li><hr class="dropdown-divider" /></li>
+                {% endcomment %}
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="marquee-text">
+      <strong>Welcome to Our Website</strong>
+    </div>
+    <marquee behavior="scroll" scrollamount="0" direction="left">
+      <strong>🎶 Impact of Music on Human Health Using Brain Signals 🧠</strong>
+    </marquee>
+
+    <div class="container">
+      <h2>Upload Data Sets:</h2>
+      <h6>Device must be of 4 Channels and data in .csv files only</h6>
+      <form
+        id="uploadForm"
+        method="post"
+        enctype="multipart/form-data"
+        onsubmit="return validateForm()"
+      >
+        {% csrf_token %}
+        <label for="before_file"
+          >Insert .CSV file containing before music data:</label
+        >
+        <input
+          type="file"
+          name="before_file"
+          id="before_file"
+          accept=".csv"
+        /><br /><br />
+        <label for="after_file"
+          >Insert after music .CSV file with respect to the genre chosen
+          above:</label
+        >
+        <input type="file" name="after_file" id="after_file" accept=".csv" />
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+    <br /><br />
+    <script>
+      function validateForm() {
+        var beforeFile = document.getElementById("before_file").value;
+        var afterFile = document.getElementById("after_file").value;
+        if (beforeFile == "" || afterFile == "") {
+          alert("Please select both files before uploading.");
+          return false;
+        }
+        return true;
+      }
+    </script>
+
+    <footer class="footer">
+      <p>&copy; 2024 Impact Of Music On Human Health Using Brain Signals</p>
+    </footer>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>

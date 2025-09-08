@@ -1,0 +1,38 @@
+<!-- upload_excel.html -->
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel Files</title>
+    <style>
+        .genre{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Excel Files</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'upload_excel' %}">
+        {% csrf_token %}
+        <label for="before_file">Insert .CSV file containg before music data:</label><br>
+        <input type="file" id="before_file" name="before_file"><br><br>
+        <div clas="genre">
+            <div>
+                <label for="before_file">Choose genre of music listened:</label>
+            </div>
+            <div>
+
+            </div>
+
+        </div>
+        <label for="after_file">Insert after music .CSV file wrt genre choosed above</label><br>
+        <input type="file" id="after_file" name="after_file"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
